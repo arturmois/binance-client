@@ -261,3 +261,13 @@ class BinanceClient:
         balances = pd.DataFrame(account_balances)
         balances.to_excel('report.xlsx', index=False)
         return account_balances
+
+
+def main():
+    exchange = BinanceClient('credentials.txt')
+    data = exchange.get_account_data()
+    print(data)
+
+
+if __name__ == '__main__':
+    main()

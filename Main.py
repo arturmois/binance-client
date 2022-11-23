@@ -42,7 +42,7 @@ def rebalance(balances):
 
             )
 
-        if x['asset'] == 'USDC':
+        if x['asset'] == 'USDT':
             x['usd'] = usd
             usdc = x['size']
         else:
@@ -58,17 +58,16 @@ def rebalance(balances):
 
     for balance in balances:
         print(balance)
-        if balance['asset'] != 'USDC':
+        if balance['asset'] != 'USDT':
 
             if usdc < total_usd * 0.3:
                 print('here')
 
 
 def main():
-    exchange = BinanceClient('bin_credentials.txt')
-    portfolio = extract_portfolio(exchange, 'staking.xlsx')
-    rebalance(portfolio)
-
+    exchange = BinanceClient('credentials.txt')
+    data = exchange.get_account_balances()
+    print(data)
 
 if __name__ == '__main__':
     main()
